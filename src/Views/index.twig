@@ -1,0 +1,111 @@
+{% extends "./template/layout.html.twig" %}
+
+{% block body %}
+<div class = 'mt-4 bg-light'>
+<div id="caja" class="shadow p-3 mb-5 bg-body rounded bg-light">
+    <h3>Pruebas</h3>
+    <div class="row bg-light">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="btn-group col-md-2 mt-2">
+                    <div ><a href="http://127.0.0.1:3000/prueba/excel"><img id="utils" src="http://127.0.0.1:3000/src/assets/images/excel.png" width="60"/></a></div>
+                    
+                    <div><a href="http://127.0.0.1:3000/prueba/pdf"><img src="http://127.0.0.1:3000/src/assets/images/pdf.png" width="40"/></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="http://127.0.0.1:3000/prueba/create"><button class="btn btn-outline-success mb-2 mt-2">Agregar nueva prueba </button></a>
+        </div>
+            
+    </div>
+    
+    <form>
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control" list="nombre" placeholder="Nombre"/>
+                <datalist id="nombre">
+                    {% for variable in variables[1] %} 
+                        <option>{{variable.nombre}}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+                        <div class="col-md-4">
+                <input type="text" class="form-control" list="apellido" placeholder="Apellido"/>
+                <datalist id="apellido">
+                    <option>Pereyra</option>
+                    <option>Madonado</option>
+                    <option>Peña</option>
+                    <option>Delgado</option>
+
+                </datalist>
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th width="30%" scope="col">Nombre</th>
+                <th width="30%">Apellido</th>
+                <th width="20%">Fecha</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for variable in variables[0] %} 
+            
+                <tr>
+                    <td>{{variable.id}}</td>
+                    <td>{{variable.nombre}}</a></td>
+                    <td>{{variable.apellido}}</td>
+                    <td>{{variable.created_at}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-info "><a class="text-light" href="http://127.0.0.1:3000/prueba/detail/{{variable.id}}">Seleccionar</a></button>
+                            <button class="btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#exampleModal{{variable.id}}">Borrar </a></button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{variable.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{variable.id}}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel{{variable.id}}">Eliminar prueba</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Seguro desea eliminar el registro de:<strong> {{variable.nombre}} {{variable.apellido}}</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="text-light btn btn-danger" href="http://127.0.0.1:3000/prueba/delete/{{variable.id}}">Borrar</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                            
+            {% endfor %}
+        </tbody>
+    </table>
+    <nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:3000/prueba/paginate/0">1</a></li>
+        <li class="page-item active">
+        <a class="page-link" href="http://127.0.0.1:3000/prueba/paginate/1">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:3000/prueba/paginate/2">3</a></li>
+        <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+    </nav>
+<div>
+</div>
+{% endblock %}

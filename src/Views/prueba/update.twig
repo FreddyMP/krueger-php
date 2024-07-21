@@ -1,0 +1,38 @@
+{% extends "./template/layout.html.twig" %}
+{% block body %}
+<div class = 'mt-4 bg-light'>
+    <div id="caja" class="shadow p-3 mb-5 bg-body rounded bg-light">
+        <h3>Prueba - {{variables.nombre}}</h3>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Detalle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+        <div class="row bg-light mt-3">
+            <form action="http://127.0.0.1:3000/prueba/update" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                    <input type="text" name="nombre"class="form-control"value="{{variables.nombre}}" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="hidden" name="id" value="{{variables.id}}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Apellido</label>
+                    <textarea name="apellido" class="form-control" id="exampleFormControlTextarea1" rows="3">{{variables.apellido}}</textarea>
+                </div>
+                <div>
+                <button class="btn btn-outline-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+    <div>
+</div>
+{% endblock %}

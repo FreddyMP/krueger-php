@@ -1,0 +1,28 @@
+html, body{
+    height:100%;
+    margin:0;
+  }
+
+  body{
+    background: rgb(10,130,254);
+    background: linear-gradient(90deg, rgba(10,130,254,1) 0%, rgba(83,169,228,1) 0%, rgba(9,85,121,1) 50%, rgb(56, 13, 245) 100%);
+    /*
+    background-color:rgb(78, 78, 248) !important;
+    background-color: rgb(231, 231, 233) !important;
+    */
+  }
+  a{
+    text-decoration: none !important;
+    color:rgb(108, 144, 180)!important ;
+  }
+
+  #utils{
+    margin-left: 65px !important;
+  }
+
+  #caja{
+    height:90vh !important;
+  }
+  td{
+    color:rgb(108, 144, 180)!important ;
+  }
